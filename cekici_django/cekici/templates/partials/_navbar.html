@@ -1,0 +1,51 @@
+<nav>
+  <div class="navust">
+    <a href="tel:+905529385880"><i style="margin-right: 15px;" class="fa-solid fa-phone"></i>+90 552 938 58 80</a>
+  </div>
+  <div class="navcont">
+    <div class="navlogo">
+      <!-- <a href="#"><img src="{{ site_content.logo.url }}" alt="logo" width="150px" /></a> -->
+       <h3>Ateş Oto Kurtarma</h3>
+    </div>
+
+    <input type="checkbox" name="menu" id="menu" />
+    <label for="menu" id="menu2">
+      <i class="fa-solid fa-bars"></i>
+    </label>
+
+    <div class="navmenuler">
+      <ul>
+        <li><a href="{% url 'home' %}">AnaSayfa</a></li>
+        <li><a href="#">Oto Araç Kurtarma</a></li>
+        <li><a href="#">İletişim</a></li>
+        <li><a href="#">Hakkımızda</a></li>
+        <!-- <li>
+          <a href="#"
+            >Bütün Topluluklar <i class="fa-solid fa-caret-down"></i
+          ></a>
+          <div class="altmenu">
+            <ul>
+              {% for community in communities %}
+              <li><a href="{% url 'community_page' community.name %}">{{ community.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navust {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+  }
+  .navust a {
+    color: black;
+    text-decoration: none;
+  }
+</style>

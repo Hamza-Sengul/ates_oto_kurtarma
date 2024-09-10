@@ -1,0 +1,620 @@
+{% extends "layout.html" %} {% block content %}
+<div class="slider">
+  <div class="slides">
+    {% for image in slider_images %}
+    <div class="slide {% if forloop.first %}active{% endif %}">
+      <img src="{{ image.image.url }}" alt="{{ image.caption }}" />
+    </div>
+    {% endfor %}
+  </div>
+  <div class="dots">
+    {% for image in slider_images %}
+    <span
+      class="dot {% if forloop.first %}active{% endif %}"
+      data-index="{{ forloop.counter0 }}"
+    ></span>
+    {% endfor %}
+  </div>
+</div>
+
+
+<script>
+    
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            dots[i].classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+                dots[i].classList.add('active');
+            }
+        });
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        let nextIndex = (currentIndex + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 3000);
+    }
+
+    function stopSlideShow() {
+        clearInterval(slideInterval);
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            let index = parseInt(dot.getAttribute('data-index'));
+            showSlide(index);
+            stopSlideShow(); // Tıklayınca döngüyü durdur
+            startSlideShow(); // Sonra tekrar başlat
+        });
+    });
+
+    startSlideShow();
+});
+
+</script>
+<h2 style="margin-top: 40px; text-align: center;">Hizmetlerimiz</h2>
+<div class="cards">
+    <div class="card">
+        <div class="icon">
+            <i class="fa-regular fa-clock"></i>
+        </div>
+        <h3>Hızlı Çekici Hizmeti</h3>
+        <p>Acil durumlarda en hızlı çekici hizmetiyle yanınızdayız. Güvenli ve pratik çözümler.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+            <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <h3>7/24 Acil Destek</h3>
+        <p>Her zaman yanınızdayız! 7/24 acil destek ile anında müdahale ve çözüm sunuyoruz.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+            <i class="fa-solid fa-car-side"></i>
+        </div>
+        <h3>Güvenilir Araç Taşıma</h3>
+        <p>Güvenilir çekici filomuz ve özenli taşıma. Araçlarınız bizimle her zaman güvende!</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+            <i class="fa-solid fa-microchip"></i>
+        </div>
+        <h3>Teknolojik Ekipmanlar</h3>
+        <p>Son teknoloji çekici ekipmanlarıyla en etkili çözümleri sunuyoruz. Teknolojiyle güçlenin!</p>
+      </div>
+</div>
+
+  <style>
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 30px;
+    }
+    @media   (max-width: 768px) {
+        .cards {
+            grid-template-columns: 1fr;
+            }  
+    }
+    .card i {
+        color: red;
+        font-size: larger;
+    }
+    .card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 300px;
+  position: relative;
+}
+.card:hover {
+    box-shadow: 0px 8px 15px rgba(255, 0, 0, 0.1);
+}
+
+.icon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #F9E9E9; /* Light pinkish background for icon */
+  padding: 10px;
+}
+
+h3 {
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #212121;
+}
+
+p {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #707070;
+  margin-top: 10px;
+}
+
+
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 8px;
+  background-color: #c0c0c0; /* Light shadow effect below card */
+  border-radius: 20px;
+}
+.card:hover .card::before {
+    background-color: red;
+}
+
+  </style>
+
+<h2 style="text-align: center; margin-top: 30px;">Google Yorumları</h2>
+<div class="menu2">
+
+  <div class="task" draggable="true">
+    <div class="tags">
+      <span class="tag">A****** Ş*****</span>
+      <button class="options">
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 41.915 41.916"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Capa_1"
+          version="1.1"
+          fill="#000000"
+        >
+          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            id="SVGRepo_tracerCarrier"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <g>
+                <path
+                  d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"
+                ></path>
+                <path
+                  d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"
+                ></path>
+                <path
+                  d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <p>
+        Hızlı ve güvenilir bir hizmet aldım. Yolda kaldığımda panik yapmadan hemen Ateş Oto Kurtarma'yı aradım. 20 dakika içinde geldiler ve aracımı güvenli bir şekilde çektiler. Herkese tavsiye ederim.
+
+    </p>
+    
+  </div>
+  <div class="task" draggable="true">
+    <div class="tags">
+      <span class="tag">c****** B*****</span>
+      <button class="options">
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 41.915 41.916"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Capa_1"
+          version="1.1"
+          fill="#000000"
+        >
+          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            id="SVGRepo_tracerCarrier"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <g>
+                <path
+                  d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"
+                ></path>
+                <path
+                  d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"
+                ></path>
+                <path
+                  d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <p>
+        Gece geç saatte aramama rağmen çok hızlı bir şekilde ulaştılar. Profesyonel bir ekiple çalıştıkları belli. Aracım hiç zarar görmeden tamirhaneye götürüldü. Teşekkür ederim.
+
+    </p>
+    
+  </div>
+  <div class="task" draggable="true">
+    <div class="tags">
+      <span class="tag">s*** d*****:**</span>
+      <button class="options">
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 41.915 41.916"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Capa_1"
+          version="1.1"
+          fill="#000000"
+        >
+          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            id="SVGRepo_tracerCarrier"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <g>
+                <path
+                  d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"
+                ></path>
+                <path
+                  d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"
+                ></path>
+                <path
+                  d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <p>
+        Aracım bozulduğunda ne yapacağımı bilemedim. Ateş Oto Kurtarma, hızla yardıma geldi ve tüm süreci çok profesyonelce yönetti. Kesinlikle güvenilir bir firma.
+    </p>
+    
+  </div>
+  <div class="task" draggable="true">
+    <div class="tags">
+      <span class="tag">e*** t****:**</span>
+      <button class="options">
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 41.915 41.916"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Capa_1"
+          version="1.1"
+          fill="#000000"
+        >
+          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            id="SVGRepo_tracerCarrier"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <g>
+                <path
+                  d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"
+                ></path>
+                <path
+                  d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"
+                ></path>
+                <path
+                  d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <p>
+        Kibar ve deneyimli bir ekip. Aracımı sorunsuz bir şekilde tamirhaneye çektiler. Fiyatları da oldukça makul. Yolda kalırsam yine onları ararım.
+
+    </p>
+    
+  </div>
+  
+  <div class="task" draggable="true">
+    <div class="tags">
+      <span class="tag">d*** z****:**</span>
+      <button class="options">
+        <svg
+          xml:space="preserve"
+          viewBox="0 0 41.915 41.916"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Capa_1"
+          version="1.1"
+          fill="#000000"
+        >
+          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            id="SVGRepo_tracerCarrier"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <g>
+                <path
+                  d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"
+                ></path>
+                <path
+                  d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"
+                ></path>
+                <path
+                  d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <p>
+        Yolda kaldığımda ilk aradığım firma oldular ve kesinlikle pişman olmadım. Hızlı ve güvenilir bir hizmet sundular. Kesinlikle tavsiye ederim.
+        
+    </p>
+    
+  </div>
+</div>
+
+<style>
+  .menu2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  @media   (max-width: 768px) {
+    .menu2 {
+        grid-template-columns: 1fr;
+    }
+
+
+    
+  }
+
+  .task {
+    position: relative;
+    color: #2e2e2f;
+    cursor: auto;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+    margin-bottom: 1rem;
+    border: 3px dashed transparent;
+    max-width: 350px;
+  }
+
+  .task:hover {
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+    border-color: rgba(162, 179, 207, 0.2) !important;
+  }
+
+  .task p {
+    font-size: 15px;
+    margin: 1.2rem 0;
+  }
+
+  .tag {
+    border-radius: 100px;
+    padding: 4px 13px;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #1389eb;
+  }
+
+  .tags {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .options {
+    background: transparent;
+    border: 0;
+    color: #c4cad3;
+    font-size: 17px;
+  }
+
+  .options svg {
+    fill: #9fa4aa;
+    width: 20px;
+  }
+
+  .stats {
+    position: relative;
+    width: 100%;
+    color: #9fa4aa;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stats div {
+    margin-right: 1rem;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .stats svg {
+    margin-right: 5px;
+    height: 100%;
+    stroke: #9fa4aa;
+  }
+
+  .viewer span {
+    height: 30px;
+    width: 30px;
+    background-color: rgb(28, 117, 219);
+    margin-right: -10px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    padding: 2px;
+  }
+
+  .viewer span svg {
+    stroke: #fff;
+  }
+</style>
+
+<div class="container2" style="margin-top: 50px">
+  <div class="hakkimizda2">
+    <h2 class="hakkımızda2">HAKKIMIZDA</h2>
+    <p class="div-h2-p2">{{ site_content.about_us }}</p>
+  </div>
+
+  <div class="vizyonumuz2">
+    <h2 class="hakkımızda2">VİZYONUMUZ</h2>
+    <p class="div-h2-p2">{{ site_content.vision }}</p>
+  </div>
+</div>
+
+<style>
+  .container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hakkimizda2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 50px 0 50px;
+  }
+  .hakkimizda2 p {
+    text-align: justify;
+  }
+  .hakkimizda2 h2 {
+    border-bottom: 4px solid #c1c1c1;
+    display: inline-block;
+  }
+  .vizyonumuz2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 50px 0 50px;
+  }
+  .vizyonumuz2 p {
+    text-align: justify;
+  }
+  .vizyonumuz2 h2 {
+    border-bottom: 4px solid #c1c1c1;
+    display: inline-block;
+  }
+  @media (max-width: 600px) {
+    .container2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const aboutSection = document.querySelector(".hakkimizda2");
+    const visionSection = document.querySelector(".vizyonumuz2");
+
+    function checkPosition() {
+      const aboutPosition = aboutSection.getBoundingClientRect().top;
+      const visionPosition = visionSection.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+
+      if (aboutPosition < screenPosition) {
+        aboutSection.style.transition =
+          "transform 1s ease-out, opacity 1s ease-out";
+        aboutSection.style.transform = "translateX(0)";
+        aboutSection.style.opacity = "1";
+      }
+
+      if (visionPosition < screenPosition) {
+        visionSection.style.transition =
+          "transform 1s ease-out, opacity 1s ease-out";
+        visionSection.style.transform = "translateX(0)";
+        visionSection.style.opacity = "1";
+      }
+    }
+
+    function debounce(func, wait = 10, immediate = true) {
+      let timeout;
+      return function () {
+        const context = this,
+          args = arguments;
+        const later = function () {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    }
+
+    // Initial transform setup
+    aboutSection.style.transform = "translateX(-100%)";
+    aboutSection.style.opacity = "0";
+
+    visionSection.style.transform = "translateX(100%)";
+    visionSection.style.opacity = "0";
+
+    window.addEventListener(
+      "scroll",
+      debounce(() => {
+        requestAnimationFrame(checkPosition);
+      })
+    );
+
+    checkPosition(); // Sayfa yüklendiğinde hemen kontrol et
+  });
+</script>
+{% endblock %}
